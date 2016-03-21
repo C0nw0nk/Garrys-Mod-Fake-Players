@@ -33,4 +33,8 @@ Install the script to the `"/garrysmod/lua/autorun/server/"` folder.
 
 The path to should look like this : `"/garrysmod/lua/autorun/server/sv_fakeplayers.lua"`
 
+Configure the script with any settings you want : (I recommend default)
+
+https://github.com/C0nw0nk/Garrys-Mod-Fake-Players/blob/master/addons/fakeplayers/lua/autorun/server/sv_fakeplayers.lua#L1
+
 If you have any bugs issues or problems just post a Issue request. https://github.com/C0nw0nk/Garrys-Mod-Fake-Players/issues
