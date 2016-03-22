@@ -40,3 +40,11 @@ Configure the script with any settings you want : (I recommend default)
 https://github.com/C0nw0nk/Garrys-Mod-Fake-Players/blob/master/addons/fakeplayers/lua/autorun/server/sv_fakeplayers.lua#L1
 
 If you have any bugs issues or problems just post a Issue request. https://github.com/C0nw0nk/Garrys-Mod-Fake-Players/issues
+
+# TODO Tasks :
+
+This script does everything a bot script should do the only thing currently missing is support for NextBots in each game mode.
+
+When support is added for each game mode NextBots will be responsive and attack be friendly fight back etc you get the idea. Think of them like fighting against the AI bots in Killing Floor.
+
+https://github.com/C0nw0nk/Garrys-Mod-Fake-Players/blob/master/addons/fakeplayers/lua/autorun/server/sv_fakeplayers.lua#L133
