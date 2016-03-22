@@ -9,7 +9,9 @@ Specify number of slots that bots may never fill. (Default : 10)
 
 Specify your own bot names.
 
-Steal legit player names and use them for bot names.
+Steal legit player names and use them for bot names. (Default : TRUE)
+
+Set Max number on names to steal / save. (Default : FALSE)
 
 Filter out words phrases etc from names we steal and name our bots with to prevent advertising etc.
 
