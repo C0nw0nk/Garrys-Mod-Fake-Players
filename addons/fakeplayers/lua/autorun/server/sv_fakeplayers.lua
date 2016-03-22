@@ -91,6 +91,13 @@ Bot_Names = {
 --The list of names saved can be found on your server written here : "/garrysmod/data/BotNames.txt"
 Save_Player_Names = true
 
+--The max number of names to be saved.
+--Set a number to enable | false to disable.
+--Only allow max of 1000 names to be saved / stolen.
+--Max_Names_to_Save = 1000
+--Currently false so unlimited names will be saved.
+Max_Names_to_Save = false
+
 --This feature only works if the Save_Player_Names feature is set to be true / enabled.
 --Filter out player names we steal for bad words phrases advertising etc.
 --This prevents the bots that get randomly named on the server from advertising others.
@@ -122,6 +129,12 @@ THIS BLOCK IS ENTIRELY WRITTEN IN CAPS LOCK TO SHOW YOU HOW SERIOUS I AM.
 
 --This area is for Game Mode support. (If you are a developer you can use this to add support for GameModes.)
 --For example hook's, calls etc to disable / prevent or fix the game mode doing things that causes problems with fake bots, players, displays, team switching you get the idea.
+
+--[[ TODO :
+Everything NextBot related is server sided.
+https://wiki.garrysmod.com/page/Category:NextBot
+So add support for each gamemode and nextbots here.
+]]
 
 --Sand Box support.
 if GAMEMODE_NAME == "sandbox" then
@@ -297,16 +310,18 @@ function AddNametoDatabase(name)
 		end
 	end
 
-	--TODO : Allow limit to be set (currently is unlimited resulting in a big file.)
 	if file.Exists("BotNames.txt", "DATA") then
 		--Read our file.
 		local lol = file.Read("BotNames.txt", "DATA")
 		--Put our file data into a table.
 		data = string.Explode("\n", lol)
-		--Only add names to database that do not exist.
-		if !table.HasValue(data, name) then
-			--Add the new name to the file.
-			file.Append("BotNames.txt", "\n"..name.."")
+		--Prevent the file becomming larger than we say.
+		if table.Count(data) <= Max_Names_to_Save or Max_Names_to_Save == false then
+			--Only add names to database that do not exist.
+			if !table.HasValue(data, name) then
+				--Add the new name to the file.
+				file.Append("BotNames.txt", "\n"..name.."")
+			end
 		end
 	else
 		--file did not exist so create it and add player name.
