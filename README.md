@@ -1,6 +1,8 @@
 # Garrys-Mod-Fake-Players
 Spoof / fake player counts on servers in Garrys Mod using bots lots of useful features to customize slots to be kept free / open and make the bots look like real players
 
+The main concept of this addon is to be used as a base to add support for NextBot's in each game mode, Would allow servers players to no longer play alone but to have bot's to compete against that will slowly be removed as regular players join them.
+
 # Features :
 
 Assign all bots to a single team only. (Default : TEAM_SPECTATOR)
