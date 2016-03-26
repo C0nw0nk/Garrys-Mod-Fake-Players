@@ -1,7 +1,7 @@
 # Garrys-Mod-Fake-Players
 Spoof / fake player counts on servers in Garrys Mod using bots lots of useful features to customize slots to be kept free / open and make the bots look like real players
 
-The main concept of this addon is to be used as a base to add support for NextBot's in each game mode, Would allow servers players to no longer play alone but to have bot's to compete against that will slowly be removed as regular players join them.
+The main concept of this addon is to be used as a base to add support for NextBot's in each game mode, Would allow servers players to no longer play alone but to have bot's to compete against that will slowly be removed as regular players join them. The result will be your server will be full of legit players only as bots get removed when legit players join, When a legit player disconnects the script checks the player count and slots available and if player count is less than your free number of slots it will spawn a bot to keep the player count looking high.
 
 # Features :
 
