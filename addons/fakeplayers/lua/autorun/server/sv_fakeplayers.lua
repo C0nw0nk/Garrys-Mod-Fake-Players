@@ -199,6 +199,19 @@ if GAMEMODE_NAME == "zombiesurvival" then
 			--Prevent Bots being put on the volunteer list.
 		end)]]
 	end
+	--When bots die force them to respawn.
+	if Team_to_Assign_Bots == false then
+		hook.Add("PlayerDeath", "PlayerDeath-GameMode-Support", function(ply)
+			--Make sure the wave is active and not a intermission.
+			if GetGlobalBool("waveactive") == true then
+				--Respawn bots when killed.
+				if ply:IsBot() then
+					--Force the bot to respawn.
+					ply:Spawn()
+				end
+			end
+		end)
+	end
 end
 
 --Awesome Strike: Source support.
@@ -293,6 +306,7 @@ function AddNametoDatabase(name)
 
 	--TODO : Improve this pattern matching / filtering technique.
 	for i=1, #Bot_Name_Filter do
+		--[[ Nulled out this code to use regex for upper / lower case matching.
 		--lower case matches.
 		if name:lower():find(Bot_Name_Filter[i]) then
 			--Filter out string and replace with nothing.
@@ -302,7 +316,7 @@ function AddNametoDatabase(name)
 		if name:upper():find(Bot_Name_Filter[i]) then
 			--Filter out string and replace with nothing.
 			name = name:gsub(Bot_Name_Filter[i], "")
-		end
+		end]]
 		--For exact matches
 		if name:find(Bot_Name_Filter[i]) then
 			--Filter out string and replace with nothing.
