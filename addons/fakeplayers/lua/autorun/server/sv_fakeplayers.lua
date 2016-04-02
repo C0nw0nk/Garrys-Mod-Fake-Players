@@ -217,11 +217,12 @@ if GAMEMODE_NAME == "zombiesurvival" then
 	hook.Add("StartCommand", "StartCommand-GameMode-Support", function(ply,cmd)
 		--Make sure the wave is active and not a intermission.
 		if GetGlobalBool("waveactive") == true then
-			--Respawn bots when killed.
+			--For bot players.
 			if ply:IsBot() then
-				--Make bot run foward and left (in a circle.)
+				--Make bot run foward, left and attack (in a circle.)
 				cmd:SetButtons(IN_FORWARD)
 				cmd:SetButtons(IN_LEFT)
+				cmd:SetButtons(IN_ATTACK)
 			end
 		end
 	end)]]
