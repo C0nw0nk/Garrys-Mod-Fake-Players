@@ -136,6 +136,9 @@ https://wiki.garrysmod.com/page/Category:NextBot
 So add support for each gamemode and nextbots here.
 ]]
 
+--Timer to delay grabbing GAMEMODE.Name to let the gamemode load first.
+timer.Simple(2, function()
+
 --Sand Box support.
 if GAMEMODE_NAME == "sandbox" then
 end
@@ -235,6 +238,8 @@ end
 --Extreme Football Throwdown support.
 if GAMEMODE_NAME == "extremefootballthrowdown" then
 end
+
+end) --End timer delay.
 
 --End Game Mode support.
 
