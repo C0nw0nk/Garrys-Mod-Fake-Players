@@ -358,11 +358,14 @@ hook.Add("InitPostEntity", "InitPostEntity-Spoof-Player-Count", function()
 			if Team_to_Assign_Bots != false then
 				--Get all bots.
 				for k,v in pairs(player.GetBots()) do
-					--Some game modes are stupid so we need to kill the bot before switching team.
-					--v:Kill()
-					v:KillSilent()
-					--Team to put the bots on.
-					v:SetTeam(Team_to_Assign_Bots)
+					--If the bot is not on the team specified.
+					if v:Team() != Team_to_Assign_Bots then
+						--Some game modes are stupid so we need to kill the bot before switching team.
+						--v:Kill()
+						v:KillSilent()
+						--Team to put the bots on.
+						v:SetTeam(Team_to_Assign_Bots)
+					end
 				end
 			end
 		end)
@@ -373,8 +376,8 @@ end)
 if Team_to_Assign_Bots != false then
 	--When a bot spawns for the first time set their team.
 	function BotInitialSpawnTeamSwitch(ply)
-		--If player is bot.
-		if ply:IsBot() then
+		--If player is bot and not on the team specified.
+		if ply:IsBot() and ply:Team() != Team_to_Assign_Bots then
 			--Some game modes are stupid so we need to kill the bot before switching team.
 			--ply:Kill()
 			ply:KillSilent()
@@ -386,8 +389,8 @@ if Team_to_Assign_Bots != false then
 
 	--When a bot spawns set their team.
 	function BotTeamSwitch(ply)
-		--If player is bot.
-		if ply:IsBot() then
+		--If player is bot and not on the team specified.
+		if ply:IsBot() and ply:Team() != Team_to_Assign_Bots then
 			--Some game modes are stupid so we need to kill the bot before switching team.
 			--ply:Kill()
 			ply:KillSilent()
@@ -426,11 +429,14 @@ hook.Add("PlayerDisconnected", "PlayerDisconnected-SpawnBot", function(ply)
 		if Team_to_Assign_Bots != false then
 			--Get all bots.
 			for k,v in pairs(player.GetBots()) do
-				--Some game modes are stupid so we need to kill the bot before switching team.
-				--v:Kill()
-				v:KillSilent()
-				--Team to put the bots on.
-				v:SetTeam(Team_to_Assign_Bots)
+				--If the bot is not on the team specified.
+				if v:Team() != Team_to_Assign_Bots then
+					--Some game modes are stupid so we need to kill the bot before switching team.
+					--v:Kill()
+					v:KillSilent()
+					--Team to put the bots on.
+					v:SetTeam(Team_to_Assign_Bots)
+				end
 			end
 		end
 	end
@@ -458,11 +464,14 @@ hook.Add("PlayerDisconnected", "PlayerDisconnected-SpawnBot", function(ply)
 				if Team_to_Assign_Bots != false then
 					--Get all bots.
 					for k,v in pairs(player.GetBots()) do
-						--Some game modes are stupid so we need to kill the bot before switching team.
-						--v:Kill()
-						v:KillSilent()
-						--Team to put the bots on.
-						v:SetTeam(Team_to_Assign_Bots)
+						--If the bot is not on the team specified.
+						if v:Team() != Team_to_Assign_Bots then
+							--Some game modes are stupid so we need to kill the bot before switching team.
+							--v:Kill()
+							v:KillSilent()
+							--Team to put the bots on.
+							v:SetTeam(Team_to_Assign_Bots)
+						end
 					end
 				end
 			end
@@ -486,11 +495,14 @@ hook.Add("PlayerDisconnected", "PlayerDisconnected-SpawnBot", function(ply)
 				if Team_to_Assign_Bots != false then
 					--Get all bots.
 					for k,v in pairs(player.GetBots()) do
-						--Some game modes are stupid so we need to kill the bot before switching team.
-						--v:Kill()
-						v:KillSilent()
-						--Team to put the bots on.
-						v:SetTeam(Team_to_Assign_Bots)
+						--If the bot is not on the team specified.
+						if v:Team() != Team_to_Assign_Bots then
+							--Some game modes are stupid so we need to kill the bot before switching team.
+							--v:Kill()
+							v:KillSilent()
+							--Team to put the bots on.
+							v:SetTeam(Team_to_Assign_Bots)
+						end
 					end
 				end
 			end
@@ -519,11 +531,14 @@ timer.Create("Timer-Loop-Spoof-Player-Count", Bot_Timer_Check, 0, function()
 		if Team_to_Assign_Bots != false then
 			--Get all bots.
 			for k,v in pairs(player.GetBots()) do
-				--Some game modes are stupid so we need to kill the bot before switching team.
-				--v:Kill()
-				v:KillSilent()
-				--Team to put the bots on.
-				v:SetTeam(Team_to_Assign_Bots)
+				--If the bot is not on the team specified.
+				if v:Team() != Team_to_Assign_Bots then
+					--Some game modes are stupid so we need to kill the bot before switching team.
+					--v:Kill()
+					v:KillSilent()
+					--Team to put the bots on.
+					v:SetTeam(Team_to_Assign_Bots)
+				end
 			end
 		end
 	end
