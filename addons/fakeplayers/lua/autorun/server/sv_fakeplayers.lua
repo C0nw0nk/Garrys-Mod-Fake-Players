@@ -113,6 +113,11 @@ Bot_Name_Filter = {
 "www",
 } --Do not delete this.
 
+--Bot Identifier to show to players who is bot and who is not.
+--Example : Bot Identifier = "BOT | "
+--Default : empty to not show who is a bot.
+Bot_Identifier = ""
+
 --This timer is not needed but i put it here incase of conflicting scripts addons etc that somehow stop bots from spawning in.
 --I recommend leaving this as it is.
 Bot_Timer_Check = 1
@@ -379,7 +384,7 @@ hook.Add("InitPostEntity", "InitPostEntity-Spoof-Player-Count", function()
 			--For each number.
 			for i=1, FillSlots - CurrentPlayerCount do
 				--Spawn / create a bot.
-				player.CreateNextBot(""..RandomName().."")
+				player.CreateNextBot(""..Bot_Identifier..""..RandomName().."")
 				--RunConsoleCommand("bot")
 			end
 
@@ -448,7 +453,7 @@ hook.Add("PlayerDisconnected", "PlayerDisconnected-SpawnBot", function(ply)
 	--Need to run a check on player count. (Only create bots on player count avaliable.)
 	if #player.GetHumans() + #player.GetBots() <= game.MaxPlayers() - Number_of_Free_Slots and ply:IsBot() then
 		--Spawn / create a bot.
-		player.CreateNextBot(""..RandomName().."")
+		player.CreateNextBot(""..Bot_Identifier..""..RandomName().."")
 		--RunConsoleCommand("bot")
 
 		--Assign all bots to a single team rather than let your game mode balance them.
@@ -475,11 +480,11 @@ hook.Add("PlayerDisconnected", "PlayerDisconnected-SpawnBot", function(ply)
 				--If player names are to be saved then.
 				if Save_Player_Names != false then
 					--Spawn bot in the place of the player that just left and steal the players name :)
-					player.CreateNextBot(""..ply:Nick().."")
+					player.CreateNextBot(""..Bot_Identifier..""..ply:Nick().."")
 					--RunConsoleCommand("bot")
 				else --Not to be saved so give random.
 					--Create a bot and give a random name.
-					player.CreateNextBot(""..RandomName().."")
+					player.CreateNextBot(""..Bot_Identifier..""..RandomName().."")
 					--RunConsoleCommand("bot")
 				end
 
@@ -508,7 +513,7 @@ hook.Add("PlayerDisconnected", "PlayerDisconnected-SpawnBot", function(ply)
 			if #player.GetHumans() + #player.GetBots() <= game.MaxPlayers() - Number_of_Free_Slots then
 
 				--Create a bot and give a random name.
-				player.CreateNextBot(""..RandomName().."")
+				player.CreateNextBot(""..Bot_Identifier..""..RandomName().."")
 				--RunConsoleCommand("bot")
 
 				--Assign all bots to a single team rather than let your game mode balance them.
@@ -540,7 +545,7 @@ timer.Create("Timer-Loop-Spoof-Player-Count", Bot_Timer_Check, 0, function()
 		--For each number.
 		for i=1, FillSlots - CurrentPlayerCount do
 			--Spawn / create a bot.
-			player.CreateNextBot(""..RandomName().."")
+			player.CreateNextBot(""..Bot_Identifier..""..RandomName().."")
 			--RunConsoleCommand("bot")
 		end
 
