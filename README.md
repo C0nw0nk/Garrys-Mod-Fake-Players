@@ -17,6 +17,8 @@ Set Max number on names to steal / save. (Default : FALSE)
 
 Filter out words phrases etc from names we steal and name our bots with to prevent advertising etc.
 
+Bot Identifier to show to players who is bot and who is not. (Default : empty)
+
 # How to install :
 
 Inside your `/garrysmod/cfg/server.cfg` file make sure you have the following : (This makes sure when the server starts a bot is spawned to kick start our script.)
