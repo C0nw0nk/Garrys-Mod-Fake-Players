@@ -198,42 +198,8 @@ end
 
 --ZS | Zombie Survival support.
 if GAMEMODE_NAME == "zombiesurvival" then
-	--If the user wants all fake players to be on a single team (Specificly spectator.).
-	if Team_to_Assign_Bots == TEAM_SPECTATOR then
-		--TODO : Give bots fake frags.
-		--Frags on bots need to be game mode specific for obvious reasons.
-
-		--[[hook.Add("YourHook", "HookName-GameMode-Support", function()
-			--Prevent Bots being put on the volunteer list.
-		end)]]
-	end
-	--When bots die force them to respawn.
-	if Team_to_Assign_Bots == false then
-		hook.Add("PlayerDeath", "PlayerDeath-GameMode-Support", function(ply)
-			--Make sure the wave is active and not a intermission.
-			if GetGlobalBool("waveactive") == true then
-				--Respawn bots when killed.
-				if ply:IsBot() then
-					--Force the bot to respawn.
-					ply:Spawn()
-				end
-			end
-		end)
-	end
-	--Basis for causing bots to play.
-	--[[
-	hook.Add("StartCommand", "StartCommand-GameMode-Support", function(ply,cmd)
-		--Make sure the wave is active and not a intermission.
-		if GetGlobalBool("waveactive") == true then
-			--For bot players.
-			if ply:IsBot() then
-				--Make bot run foward, left and attack (in a circle.)
-				cmd:SetButtons(IN_FORWARD)
-				cmd:SetButtons(IN_LEFT)
-				cmd:SetButtons(IN_ATTACK)
-			end
-		end
-	end)]]
+	--Include our gamemode support file.
+	include("gamemodes/sv_zombiesurvival.lua")
 end
 
 --Awesome Strike: Source support.
