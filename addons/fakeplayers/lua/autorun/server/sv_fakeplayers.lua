@@ -210,8 +210,6 @@ end
 if GAMEMODE_NAME == "extremefootballthrowdown" then
 end
 
-end) --End timer delay.
-
 --End Game Mode support.
 
 --This area is for Admin addons support.
@@ -220,19 +218,26 @@ end) --End timer delay.
 --If you spawn bots in with the "Bot" console command this error never happens.
 --ULX support.
 if (ULib and ULib.bans) then
---TODO : Fix ULX / this ?
---ULX has some strange bug / issue with NextBot's and Player Authentication. (Have not worked out the cause yet...)
---For those who use ULX just view your server console errors when NextBots are being created.
---This script will still work fine thanks to the timer i inserted as a backup for something like this.
+--ULX has some strange bug / issue with NextBot's and Player Authentication.
 --[[
 [ERROR] Unauthed player
   1. query - [C]:-1
    2. fn - addons/ulx-v3_70/lua/ulx/modules/slots.lua:44
     3. unknown - addons/ulib-v2_60/lua/ulib/shared/hook.lua:110
 ]]
+	--Fix above error by adding acception for bots to the ulxSlotsDisconnect hook.
+	hook.Add("PlayerDisconnected", "ulxSlotsDisconnect", function(ply)
+		--If player is bot.
+		if ply:IsBot() then
+			--Do nothing.
+			return
+		end
+	end)
 end
 
 --End Admin addons support.
+
+end) --End timer delay.
 
 --Grab and select random name to name the bots we create with.
 function RandomName()
