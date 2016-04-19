@@ -408,6 +408,7 @@ end
 
 --When player connects remove a bot and give them the bots slot.
 function ConnectKillBot(ply)
+	--[[
 	--Select a random bot.
 	RandomBot = player.GetBots()[math.random(1,#player.GetBots())]
 	--If player is not a bot.
@@ -415,9 +416,44 @@ function ConnectKillBot(ply)
 		--Goodbye bot.
 		RandomBot:Kick()
 	end
+	]]
 
-	--TODO : If bots are not in spectate only kick bots that are the furthest away from legit players. and/or not alive !player:IsAlive()
-	--That way if nextbots are thinking and using the nav files when spawned we don't kick a bot that is going to kill someone boss etc.
+	--If player connecting is not a bot.
+	if !ply:IsBot() then
+
+		--Set distance.
+		local distance = 0
+		--Set target as nil.
+		local target
+
+		--For all bots.
+		for k,v in pairs(player.GetBots()) do
+			--If player is dead.
+			if v:Health() <= 0 then
+				--Kick the dead bot.
+				v:Kick()
+				--Prevent the script from executing any further.
+				return
+			else --Else no bots are dead.
+				--For all human players.
+				for p,ply in pairs(player.GetHumans()) do
+					--If not self. (No point in checking our own position.)
+					if ply:GetPos() != v:GetPos() then
+						--If the length of the next target is more than the last length found (target is further away than previous).
+						if ((v:GetPos() - ply:GetPos()):Length() > distance) then
+							--Set distance to the length furthest player.
+							distance = (v:GetPos() - ply:GetPos()):Length()
+							--Set new found target.
+							target = v
+						end
+					end
+				end
+			end
+		end
+
+		--Kick the bot furthest away.
+		target:Kick()
+	end
 end
 hook.Add("PlayerAuthed", "PlayerAuthed-KillBot", ConnectKillBot)
 
