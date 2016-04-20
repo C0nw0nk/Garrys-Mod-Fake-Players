@@ -451,8 +451,11 @@ function ConnectKillBot(ply)
 			end
 		end
 
-		--Kick the bot furthest away.
-		target:Kick()
+		--If a target is set.
+		if target != nil then
+			--Kick the bot furthest away.
+			target:Kick()
+		end
 	end
 end
 hook.Add("PlayerAuthed", "PlayerAuthed-KillBot", ConnectKillBot)
