@@ -1,4 +1,14 @@
+--[[
+Credits :
+C0nw0nk
 
+Github : https://github.com/C0nw0nk/Garrys-Mod-Fake-Players
+
+Copyright : 2016 Conor Mcknight
+
+This script was released under default Copyright Law.
+For those who want to know what that means for your use of this script read the following : http://choosealicense.com/no-license/
+]]
 	--[[
 	This script is incomplete it has allot of missing functions and TODO tasks.
 	But i was asked for it so this is a early version.
