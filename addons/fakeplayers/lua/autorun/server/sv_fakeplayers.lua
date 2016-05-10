@@ -43,11 +43,11 @@ If you have any bugs issues or problems just post a Issue request. https://githu
 --Set as false to disable.
 --If you set to false depending on your gamemode you bots will be standing around afk.
 --Example :
---Team_to_Assign_Bots = false
+Team_to_Assign_Bots = false
 --Team name example :
 --Gmod Default : = TEAM_SPECTATOR | TEAM_UNASSIGNED | TEAM_CONNECTING
 --ZombieSurvival = TEAM_SPECTATOR | TEAM_UNDEAD | TEAM_HUMAN
-Team_to_Assign_Bots = TEAM_SPECTATOR --Put on the spectator team to be hidden.
+--Team_to_Assign_Bots = TEAM_SPECTATOR --Put on the spectator team to be hidden.
 
 --Keep this many slots free from bots so server can accept regular players.
 --If you set this as 0 nobody will be able to join because server is full.
@@ -199,7 +199,7 @@ end
 --ZS | Zombie Survival support.
 if GAMEMODE_NAME == "zombiesurvival" then
 	--Include our gamemode support file.
-	include("gamemodes/sv_zombiesurvival.lua")
+	include("gamemodes/zombiesurvival/sv_zombiesurvival.lua")
 end
 
 --Awesome Strike: Source support.
