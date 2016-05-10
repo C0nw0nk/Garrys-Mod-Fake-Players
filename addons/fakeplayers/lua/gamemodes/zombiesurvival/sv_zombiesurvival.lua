@@ -343,6 +343,8 @@ For those who want to know what that means for your use of this script read the 
 							--v:SetMaxHealth(9999)
 							--If the prop has no velocity
 							if v:GetPhysicsObject():GetVelocity():Length() <= 40 then
+								--Move to prop. (Slower)
+								cmd:SetForwardMove(ply:GetMaxSpeed()/2)
 								--Duck / crouch.
 								cmd:SetButtons(IN_DUCK)
 								--Lock Aim onto Prop.
@@ -369,7 +371,14 @@ For those who want to know what that means for your use of this script read the 
 							ply:SetEyeAngles((v:GetPos() - ply:GetShootPos()):Angle())
 							--Attack prop.
 							cmd:SetButtons(IN_ATTACK)
+							--Move to prop.
+							cmd:SetForwardMove(ply:GetMaxSpeed())
 						end
+					else
+						--Lock aim onto player.
+						ply:SetEyeAngles((RandomPlayerAim(ply):GetBonePosition(1) - ply:GetShootPos()):Angle())
+						--Chase player.
+						cmd:SetForwardMove(ply:GetMaxSpeed())
 					end
 					if AimTarget:GetClass() == "player" and AimTarget != ply then
 					end
