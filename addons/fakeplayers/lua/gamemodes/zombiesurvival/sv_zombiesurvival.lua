@@ -330,8 +330,13 @@ For those who want to know what that means for your use of this script read the 
 			local AimTarget = RandomPlayerAim(ply)
 
 			if ply:GetZombieClassTable().Name == "Zombie" then
-				--Create a value to be set to true if we have a prop to propkill with.
-				local targetprop = false
+
+				--Lock aim onto player.
+				ply:SetEyeAngles((RandomPlayerAim(ply):GetBonePosition(1) - ply:GetShootPos()):Angle())
+				--Chase player.
+				cmd:SetForwardMove(ply:GetMaxSpeed())
+
+				--For propkilling.
 				for k,v in pairs(ents.FindInSphere(ply:GetPos(), 50)) do
 					--If entity is valid and both entity and player can see eachother.
 					if v:IsValid() and v:Visible(ply) then
@@ -374,19 +379,8 @@ For those who want to know what that means for your use of this script read the 
 							--Move to prop.
 							cmd:SetForwardMove(ply:GetMaxSpeed())
 						end
-					else
-						--Lock aim onto player.
-						ply:SetEyeAngles((RandomPlayerAim(ply):GetBonePosition(1) - ply:GetShootPos()):Angle())
-						--Chase player.
-						cmd:SetForwardMove(ply:GetMaxSpeed())
-					end
-					if AimTarget:GetClass() == "player" and AimTarget != ply then
 					end
 				end
-				--Lock aim onto player.
-				--ply:SetEyeAngles((RandomPlayerAim(ply):GetBonePosition(1) - ply:GetShootPos()):Angle())
-				--Chase player.
-				--cmd:SetForwardMove(ply:GetMaxSpeed())
 				
 				--If the players enemy is within melee distance then rip them to shreds.
 				if ply:GetActiveWeapon().IsMelee and ply:GetActiveWeapon().MeleeReach and ((ply:GetPos() - RandomPlayerAim(ply):GetPos()):Length() <= ply:GetActiveWeapon().MeleeReach) then
