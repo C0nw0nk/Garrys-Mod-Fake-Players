@@ -370,8 +370,7 @@ For those who want to know what that means for your use of this script read the 
 						or string.match(v:GetClass(), "prop_detpack*")
 						or string.match(v:GetClass(), "prop_spotlamp*")
 						or string.match(v:GetClass(), "prop_weapon*")
-						or string.match(v:GetClass(), "prop_ammo*")
-						or ply:Visible(AimTarget) then
+						or string.match(v:GetClass(), "prop_ammo*") then
 							--Lock Aim onto Prop.
 							ply:SetEyeAngles((v:GetPos() - ply:GetShootPos()):Angle())
 							--Attack prop.
